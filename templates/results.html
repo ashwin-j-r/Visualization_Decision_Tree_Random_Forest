@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Model Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Model Results</h1>
+        <h2>Accuracy: {{ accuracy }}%</h2>
+
+        <h2>Decision Tree (or Single Random Forest Tree)</h2>
+        <object data="{{ url_for('static', filename=tree_image.split('static/')[-1]) }}" type="image/svg+xml" class="responsive-svg"></object>
+
+        {% if feature_image %}
+            <h3>Feature Importance (Random Forest)</h3>
+            <img src="{{ url_for('static', filename=feature_image.split('static/')[-1]) }}" alt="Feature Importances" class="responsive-img">
+        {% endif %}
+
+        <h3>Confusion Matrix</h3>
+        <img src="{{ url_for('static', filename=cm_image.split('static/')[-1]) }}" alt="Confusion Matrix" class="responsive-img">
+
+        <h3>Learning Curve</h3>
+        <img src="{{ url_for('static', filename=acc_image.split('static/')[-1]) }}" alt="Accuracy Curve" class="responsive-img">
+
+        <a href="{{ url_for('index') }}" class="button">Try Another Dataset</a>
+    </div>
+</body>
+</html>

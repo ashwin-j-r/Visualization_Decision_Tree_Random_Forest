@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Model Trainer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Train Your Model</h1>
+        <form action="/train" method="post" enctype="multipart/form-data">
+            <label for="file">Select CSV File:</label>
+            <input type="file" id="file" name="file" required>
+
+            <label for="algorithm">Algorithm:</label>
+            <select id="algorithm" name="algorithm">
+                <option value="decision_tree">Decision Tree</option>
+                <option value="random_forest">Random Forest</option>
+            </select>
+
+            <label for="criterion">Criterion:</label>
+            <select id="criterion" name="criterion">
+                <option value="gini">Gini</option>
+                <option value="entropy">Entropy</option>
+            </select>
+
+            <label for="epochs">Epochs (for learning curve):</label>
+            <input type="number" id="epochs" name="epochs" value="5">
+
+            <label for="row_index">Row Index for Tree Visualization:</label>
+            <input type="number" id="row_index" name="row_index" value="0">
+
+            <button type="submit">Train Model</button>
+        </form>
+    </div>
+</body>
+</html>
